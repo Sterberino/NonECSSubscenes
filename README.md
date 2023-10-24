@@ -24,6 +24,7 @@ Please remember that scene loading is Asynchronous, and read the comments on the
 ## Known Issues
 1. There's currently a reflection issue causing an error to be logged to the Unity Console. It doesn't seem to cause any other issues.
 2. Sometimes, saving a Scene with an active SubScene prompts a Unity Editor Error Message claiming that the Scene was unable to be saved. Clicking "Try Again" or "Cancel" successfully saves the Scene.
+3. Nested SubScenes are not currently tested and not supported (at least insofar as the editor scripting portion is concerned).
 
 ## Screens
 <img width="447" alt="Hierarchy" src="https://github.com/Sterberino/NonECSSubscenes/assets/91395511/f12c5529-f06d-44f2-889d-0865c288448f">

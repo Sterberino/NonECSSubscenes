@@ -2,13 +2,16 @@
 A system for Subscenes in Unity that mimics Unity's ECS SubScenes, without using the Entity Component System. Not compatible with the Entities package. I made this because I wanted the organizational benefits Unity's SubScene system brought without having to convert my current project to ECS.
 
 ## How To use
-Make sure that the SubSceneEditor script is located in your Editor folder. More information can be found [here](https://docs.unity3d.com/Manual/SpecialFolders.html). You can create a new Subscene using the following static methods:
+First, make sure that the SubSceneEditor script is located in your Editor folder. More information can be found [here](https://docs.unity3d.com/Manual/SpecialFolders.html). 
 
-- ```SubScene.CreateEmptySubscene()```
-- ```SubScene.CreateSubsceneFromGameobject()```
-- ```SubScene.CreateSubsceneFromGameobjects()```
+You can create a new Subscene using the following static methods:
 
-You can also right click on GameObjects in the Hierarchy of an existing Scene, and select the Menu Option: **New Subscene From Selection**.
+- ```SubScene.CreateEmptySubscene();```
+- ```SubScene.CreateSubsceneFromGameobject();```
+- ```SubScene.CreateSubsceneFromGameobjects();```
+
+You can also right click on GameObjects in the Hierarchy of an existing Scene, and select the Menu Option: 
+- **New Subscene From Selection**
 
 ### Opening and Closing SubScenes
 Opening and closing the SubScenes is simple.

@@ -4,9 +4,9 @@ A system for Subscenes in Unity that mimics Unity's ECS SubScenes, without using
 ## How To use
 Make sure that the SubSceneEditor script is located in your Editor folder. More information can be found [here](https://docs.unity3d.com/Manual/SpecialFolders.html). You can create a new Subscene using the following static methods:
 
-- SubScene.CreateEmptySubscene()
-- SubScene.CreateSubsceneFromGameobject()
-- SubScene.CreateSubsceneFromGameobjects()
+- ```SubScene.CreateEmptySubscene()```
+- ```SubScene.CreateSubsceneFromGameobject()```
+- ```SubScene.CreateSubsceneFromGameobjects()```
 
 You can also right click on GameObjects in the Hierarchy of an existing Scene, and select the Menu Option: **New Subscene From Selection**.
 

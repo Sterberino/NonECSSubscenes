@@ -10,6 +10,17 @@ Make sure that the SubSceneEditor script is located in your Editor folder. More 
 
 You can also right click on GameObjects in the Hierarchy of an existing Scene, and select the Menu Option: **New Subscene From Selection**.
 
+### Opening and Closing SubScenes
+Opening and closing the SubScenes is simple.
+
+```
+  SubScene subScene;
+  subScene.OpenSubscene();
+  subScene.CloseSubscene(saveFlag);
+```
+
+Please remember that scene loading is Asynchronous, and read the comments on these methods for more information.
+
 ## Known Issues
 1. There's currently a reflection issue causing an error to be logged to the Unity Console. It doesn't seem to cause any other issues.
 2. Sometimes, saving a Scene with an active SubScene prompts a Unity Editor Error Message claiming that the Scene was unable to be saved. Clicking "Try Again" or "Cancel" successfully saves the Scene.

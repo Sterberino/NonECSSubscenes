@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using System.Linq;
+using UnityEngine.Events;
 
-
-[ExecuteInEditMode]
+[ExecuteAlways]
 public class SubScene : MonoBehaviour
 {
     /// <summary>
@@ -26,7 +26,7 @@ public class SubScene : MonoBehaviour
     /// The SubScene loads on Start if true.
     /// </summary>
     [Tooltip("The SubScene loads on Start if true.")]
-    public bool AutoLoadScene { get; set;}
+    public bool AutoLoadScene;
 
     /// <summary>
     /// Returns AssetDatabase.GetAssetPath(SceneAsset);
@@ -63,7 +63,7 @@ public class SubScene : MonoBehaviour
     /// Loads in the Subscene. 
     /// </summary>
     /// <returns>True if the Scene is open, false otherwise. Remember that scenes are loaded Asynchronously.</returns>
-    public bool OpenSubscene()
+    public bool OpenSubscene(UnityAction callback = null)
     {
         Scene activeScene;
         if (Application.isPlaying)
@@ -75,6 +75,13 @@ public class SubScene : MonoBehaviour
                 this.EditingScene = EditorSceneManager.GetSceneByName(this.SceneAsset.name);
                 LoadSubsceneGameobjects();
             };
+
+            if(callback != null)
+            {
+                op.completed += (x)=> { 
+                    callback(); 
+                };
+            }
             SceneManager.SetActiveScene(activeScene);
         
         }
@@ -109,9 +116,13 @@ public class SubScene : MonoBehaviour
     /// <returns>True if the subscene is closed. False otherwise.</returns>
     public bool CloseSubscene(bool SaveSubsceneOnClose)
     {
+        if (!this.IsLoaded)
+        {
+            return true;
+        }
         UnloadSubsceneGameobjects();
 
-        if (Application.isPlaying)
+        if ((Application.isPlaying || EditorApplication.isPlaying))
         {
             AsyncOperation op = SceneManager.UnloadSceneAsync(this.EditingScene);
             op.completed += (x)=>{
@@ -137,6 +148,10 @@ public class SubScene : MonoBehaviour
     /// <returns></returns>
     public bool SaveSubScene()
     {
+        if(Application.isPlaying)
+        {
+            return false;
+        }
         return EditorSceneManager.SaveScene(this.EditingScene);
     }
 
